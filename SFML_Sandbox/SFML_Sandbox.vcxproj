@@ -79,6 +79,7 @@
     <Link>
       <AdditionalLibraryDirectories>../../../../../SDKs/SFML-2.3.2/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;sfml-graphics-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,7 +116,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\json11\json11.cpp" />
+    <ClCompile Include="AnimationResource.cpp" />
+    <ClCompile Include="SpriteResource.cpp" />
+    <ClCompile Include="Locator.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ResourceBase.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="SpriteSheetResource.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\json11\json11.hpp" />
+    <ClInclude Include="AnimationResource.h" />
+    <ClInclude Include="SpriteResource.h" />
+    <ClInclude Include="Locator.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="ResourceBase.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SingletonTemplate.hpp" />
+    <ClInclude Include="SpriteSheetResource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

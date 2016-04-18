@@ -1,0 +1,40 @@
+{
+	"spritesheet": {
+		"path": "../resources/sprites/spaceship_detail.png"
+	},
+	"animation": {
+		"tag": "spaceship_boost",
+		"frames":[
+			{
+			"image": {
+				"path": "../resources/sprites/spaceship_detail.png",
+				"tag": "spaceship_booster_ani_0",
+				"x": 0,
+				"y": 0,
+				"height": 197,
+				"width": 215
+			}
+			},
+			{
+			"image": {
+				"path": "../resources/sprites/spaceship_detail.png",
+				"tag": "spaceship_booster_ani_1",
+				"x": 240,
+				"y": 0,
+				"height": 197,
+				"width": 215
+			}
+			},
+			{
+			"image": {
+				"path": "../resources/sprites/spaceship_detail.png",
+				"tag": "spaceship_booster_ani_2",
+				"x": 480,
+				"y": 0,
+				"height": 197,
+				"width": 215
+			}
+			}
+		]
+	}
+}
