@@ -4,7 +4,7 @@
 #include "SpriteSheetResource.h"
 #include "AnimationResource.h"
 #include "Locator.h"
-#include "../../../../json11/json11.hpp"
+#include "../../json11/json11.hpp"
 
 
 tResourceManager::tResourceManager():
