@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Utilities">
       <UniqueIdentifier>{04778b67-5a05-46d8-ad48-2db6908a4e1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Actors">
+      <UniqueIdentifier>{685036db-6d54-4348-8c5e-465a7bdaec6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actors">
+      <UniqueIdentifier>{5bb44d0d-3441-4406-9f04-5156397aa9a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,6 +72,12 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ResourceBase.h">
@@ -100,6 +112,15 @@
     </ClInclude>
     <ClInclude Include="Commands.h">
       <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="SafeDelete.hpp">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

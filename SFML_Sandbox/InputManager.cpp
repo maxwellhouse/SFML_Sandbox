@@ -1,5 +1,6 @@
 #include "InputManager.h"
 #include "Commands.h"
+#include "SafeDelete.hpp"
 #include <SFML/Window.hpp>
 
 tInputManager::tInputManager()
@@ -10,6 +11,18 @@ tInputManager::tInputManager()
     m_ButtonPause = new tPauseCommand();
     m_ButtonRight = new tMoveRightCommand();
     m_ButtonUp = new tMoveUpCommand();
+    m_NoOperation = new tCommand();
+}
+
+tInputManager::~tInputManager()
+{
+    SafeDelete(m_ButtonDown);
+    SafeDelete(m_ButtonLeft);
+    SafeDelete(m_ButtonPause);
+    SafeDelete(m_ButtonRight);
+    SafeDelete(m_ButtonShoot);
+    SafeDelete(m_ButtonUp);
+    SafeDelete(m_NoOperation);
 }
 
 tCommand* tInputManager::handleInput(sf::Window* pWindow)
@@ -35,5 +48,5 @@ tCommand* tInputManager::handleInput(sf::Window* pWindow)
                 return m_ButtonPause;
         }
     }
-    return nullptr;
+    return m_NoOperation;
 }

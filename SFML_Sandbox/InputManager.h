@@ -10,6 +10,7 @@ class tInputManager
 {
 public:
     tInputManager();
+    ~tInputManager();
 
     tCommand* handleInput(sf::Window* pWindow);
 private:
@@ -19,4 +20,5 @@ private:
     tCommand* m_ButtonRight;
     tCommand* m_ButtonUp;
     tCommand* m_ButtonDown;
+    tCommand* m_NoOperation;
 };

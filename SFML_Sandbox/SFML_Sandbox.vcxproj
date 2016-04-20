@@ -126,9 +126,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SDKs\json11\json11.cpp" />
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AnimationResource.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="SpriteResource.cpp" />
     <ClCompile Include="Locator.cpp" />
     <ClCompile Include="Logger.cpp" />
@@ -139,9 +141,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\SDKs\json11\json11.hpp" />
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="AnimationResource.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="SafeDelete.hpp" />
     <ClInclude Include="SpriteResource.h" />
     <ClInclude Include="Locator.h" />
     <ClInclude Include="Logger.h" />

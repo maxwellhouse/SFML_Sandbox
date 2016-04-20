@@ -1,31 +1,32 @@
 #include "Commands.h"
+#include "Actor.h"
 
-void tShootCommand::execute(tActor * pActor)
+void tShootCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    pActor->shoot();
+    xActor->shoot();
 }
 
-void tMoveLeftCommand::execute(tActor * pActor)
+void tMoveLeftCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    pActor->moveLeft();
+    xActor->moveLeft();
 }
 
-void tMoveRightCommand::execute(tActor * pActor)
+void tMoveRightCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    pActor->moveRight();
+    xActor->moveRight();
 }
 
-void tMoveUpCommand::execute(tActor * pActor)
+void tMoveUpCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    pActor->moveUp();
+    xActor->moveUp();
 }
 
-void tMoveDownCommand::execute(tActor * pActor)
+void tMoveDownCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    pActor->moveDown();
+    xActor->moveDown();
 }
 
-void tPauseCommand::execute(tActor * pActor)
+void tPauseCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
     // I dunno figure it out later.
     // Use state manager or something.
