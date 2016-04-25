@@ -1,6 +1,7 @@
 #pragma once
 #include "SingletonTemplate.hpp"
 #include <map>
+#include <memory>
 
 //Forward declares
 class tBaseResource;
@@ -17,7 +18,7 @@ public:
     tResourceManager();
     ~tResourceManager();
 
-    tBaseResource* GetResource(const std::string& key);
+    std::shared_ptr<tBaseResource> GetResource(const std::string& key);
     bool LoadResources(const std::string& path);
     bool LoadResourceFromTag(const std::string& tag);
 
@@ -27,7 +28,7 @@ public:
 protected:
     unsigned int m_CurrentScope;
     unsigned int m_ReferenceCount;
-    std::map<std::string, tBaseResource*> m_Resources;
+    std::map<std::string, std::shared_ptr<tBaseResource> > m_Resources;
 
 private:
     bool ReadFileToBuffer(char*& pBuffer, const std::string& path);

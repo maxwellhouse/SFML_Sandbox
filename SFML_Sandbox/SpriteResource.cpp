@@ -25,10 +25,11 @@ bool tSpriteResource::LoadResource()
     bool success = false;
     if (IsLoaded() == false)
     {
-        tSpriteSheetResource* pSpriteSheet = dynamic_cast<tSpriteSheetResource*>(tResourceManager::Instance()->GetResource(Path()));
-        if (pSpriteSheet != nullptr )
+        std::shared_ptr<tSpriteSheetResource> xSpriteSheet;
+        xSpriteSheet = std::dynamic_pointer_cast<tSpriteSheetResource>(tResourceManager::Instance()->GetResource(Path()));
+        if (xSpriteSheet != nullptr )
         {
-            m_pSprite = new sf::Sprite(*pSpriteSheet->Texture(), sf::IntRect(m_X,m_Y, m_Width, m_Height));
+            m_pSprite = new sf::Sprite(*xSpriteSheet->Texture(), sf::IntRect(m_X,m_Y, m_Width, m_Height));
             success = (m_pSprite != nullptr);
         }
     }

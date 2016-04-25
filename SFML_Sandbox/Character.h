@@ -8,7 +8,7 @@ public:
     tCharacter(const int x
         , const int y
         , const unsigned int health
-        , const std::shared_ptr<tResourceBase>& xResource);
+        , const std::shared_ptr<tBaseResource>& xResource);
 
     virtual ~tCharacter();
 

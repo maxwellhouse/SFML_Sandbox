@@ -3,13 +3,13 @@
 #include <memory>
 
 //Forward declares
-class tResourceBase;
+class tBaseResource;
 
 class tActor
 {
 public:
     tActor();
-    tActor(const int x, const int y, const std::shared_ptr<tResourceBase>& xResource);
+    tActor(const int x, const int y, const std::shared_ptr<tBaseResource>& xResource);
     virtual ~tActor();
     virtual bool moveLeft() = 0;
     virtual bool moveRight() = 0;
@@ -20,7 +20,7 @@ public:
 private:
     int m_XPos;
     int m_YPos;
-    std::shared_ptr<tResourceBase> m_xResource;
+    std::shared_ptr<tBaseResource> m_xResource;
     std::vector<tActor*> m_Projectiles;
 };
 

@@ -1,5 +1,5 @@
 #include "Character.h"
-
+#include "ResourceBase.h"
 
 
 tCharacter::tCharacter() :
@@ -11,7 +11,7 @@ tCharacter::tCharacter() :
 tCharacter::tCharacter(const int x
                      , const int y
                      , const unsigned int health
-                     , const std::shared_ptr<tResourceBase>& xResource) :
+                     , const std::shared_ptr<tBaseResource>& xResource) :
     tActor(x, y, xResource)
     , m_Health(health)
 {

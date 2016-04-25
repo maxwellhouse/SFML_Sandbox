@@ -28,7 +28,8 @@ int main()
     sf::Time elapsed = clock.restart();
 
     pResourceManager->LoadResourceFromTag("spaceship_boost");
-    std::shared_ptr<tCharacter> xPlayer = std::make_shared<tCharacter>(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 100, pResourceManager->GetResource("spaceship_boost"));
+    std::shared_ptr<tCharacter> xPlayer;
+    xPlayer = std::make_shared<tCharacter>(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 100, pResourceManager->GetResource("spaceship_boost"));
     while (true)
     {
         elapsed = clock.restart();

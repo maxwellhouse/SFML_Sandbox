@@ -142,7 +142,7 @@ bool tResourceManager::ReadSpriteSheetResource(const json11::Json& data)
 bool tResourceManager::AddResource(const std::string& key, tBaseResource* pResource)
 {
     bool success = false;
-    std::pair<std::map<std::string, tBaseResource*>::iterator, bool> it = m_Resources.insert(std::make_pair(key, pResource));
+    std::pair<std::map<std::string, std::shared_ptr<tBaseResource> >::iterator, bool> it = m_Resources.insert(std::make_pair(key, pResource));
     success = it.second;
     if(success = false)
     {
@@ -153,15 +153,15 @@ bool tResourceManager::AddResource(const std::string& key, tBaseResource* pResou
     return success;
 }
 
-tBaseResource* tResourceManager::GetResource(const std::string& key)
+std::shared_ptr<tBaseResource> tResourceManager::GetResource(const std::string& key)
 {
-    tBaseResource* pResource = nullptr;
+    std::shared_ptr<tBaseResource> xResource = nullptr;
 
-    std::map<std::string, tBaseResource*>::iterator it = m_Resources.find(key);
+    std::map<std::string, std::shared_ptr<tBaseResource> >::iterator it = m_Resources.find(key);
     if (it != m_Resources.end())
     {
-        pResource = it->second;
-        if (pResource->IsLoaded() == false && pResource->LoadResource() == false)
+        xResource = it->second;
+        if (xResource->IsLoaded() == false && xResource->LoadResource() == false)
         {
             std::string err("Resource cannot be loaded:  LoadResource failed: ");
             err += key;
@@ -174,13 +174,13 @@ tBaseResource* tResourceManager::GetResource(const std::string& key)
         err += key;
         tLocator::GetLogger().Log(err);
     }
-    return pResource;
+    return xResource;
 }
 
 bool tResourceManager::LoadResourceFromTag(const std::string& tag)
 {
     bool success = false;
-    std::map<std::string, tBaseResource*>::iterator it = m_Resources.find(tag);
+    std::map<std::string, std::shared_ptr<tBaseResource> >::iterator it = m_Resources.find(tag);
     if (it != m_Resources.end())
     {
         success = it->second->LoadResource();
@@ -190,7 +190,7 @@ bool tResourceManager::LoadResourceFromTag(const std::string& tag)
 
 void tResourceManager::update()
 {
-    std::map<std::string, tBaseResource*>::iterator it = m_Resources.begin();
+    std::map<std::string, std::shared_ptr<tBaseResource> >::iterator it = m_Resources.begin();
     while (it != m_Resources.end())
     {
         if (it->second->IsLoaded())
@@ -203,7 +203,7 @@ void tResourceManager::update()
 
 void tResourceManager::Draw(sf::RenderWindow* pWindow)
 {
-    std::map<std::string, tBaseResource*>::iterator it = m_Resources.begin();
+    std::map<std::string, std::shared_ptr<tBaseResource> >::iterator it = m_Resources.begin();
     while (it != m_Resources.end())
     {
         //TODO: FIX THIS MAN.
