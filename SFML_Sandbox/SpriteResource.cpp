@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "SpriteResource.h"
 #include "SpriteSheetResource.h"
+#include "GameEngine.h"
 #include "ResourceManager.h"
 
 tSpriteResource::tSpriteResource(const std::string& path
@@ -26,7 +27,7 @@ bool tSpriteResource::LoadResource()
     if (IsLoaded() == false)
     {
         std::shared_ptr<tSpriteSheetResource> xSpriteSheet;
-        xSpriteSheet = std::dynamic_pointer_cast<tSpriteSheetResource>(tResourceManager::Instance()->GetResource(Path()));
+        xSpriteSheet = std::dynamic_pointer_cast<tSpriteSheetResource>(tGameEngine::ResourceManager()->GetResource(Path()));
         if (xSpriteSheet != nullptr )
         {
             m_pSprite = new sf::Sprite(*xSpriteSheet->Texture(), sf::IntRect(m_X,m_Y, m_Width, m_Height));

@@ -129,6 +129,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AnimationResource.cpp" />
     <ClCompile Include="Commands.cpp" />
+    <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="SpriteResource.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AnimationResource.h" />
     <ClInclude Include="Commands.h" />
+    <ClInclude Include="GameEngine.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="SafeDelete.hpp" />

@@ -1,5 +1,4 @@
 #pragma once
-#include "SingletonTemplate.hpp"
 #include <map>
 #include <memory>
 
@@ -12,12 +11,13 @@ namespace json11
 {
     class Json;
 }
-class tResourceManager : public tSingleton<tResourceManager>
+class tResourceManager
 {
 public:
     tResourceManager();
     ~tResourceManager();
 
+public:
     std::shared_ptr<tBaseResource> GetResource(const std::string& key);
     bool LoadResources(const std::string& path);
     bool LoadResourceFromTag(const std::string& tag);

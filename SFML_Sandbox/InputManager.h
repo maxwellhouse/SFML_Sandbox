@@ -12,7 +12,7 @@ public:
     tInputManager();
     ~tInputManager();
 
-    tCommand* handleInput(sf::Window* pWindow);
+    tCommand* handleInput(std::shared_ptr<sf::Window> xWindow);
 private:
     tCommand* m_ButtonShoot;
     tCommand* m_ButtonPause;

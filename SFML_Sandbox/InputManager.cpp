@@ -25,13 +25,13 @@ tInputManager::~tInputManager()
     SafeDelete(m_NoOperation);
 }
 
-tCommand* tInputManager::handleInput(sf::Window* pWindow)
+tCommand* tInputManager::handleInput(std::shared_ptr<sf::Window> xWindow)
 {
     sf::Event event;
-    while (pWindow->pollEvent(event))
+    while (xWindow->pollEvent(event))
     {
         if (event.type == sf::Event::Closed)
-            pWindow->close();
+            xWindow->close();
         if (event.type == sf::Event::KeyPressed)
         {
             if (event.key.code == sf::Keyboard::Space)

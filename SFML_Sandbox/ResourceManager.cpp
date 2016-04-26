@@ -8,7 +8,7 @@
 
 
 tResourceManager::tResourceManager():
-    m_CurrentScope(0)
+      m_CurrentScope(0)
     , m_ReferenceCount(0)
 {
 }
