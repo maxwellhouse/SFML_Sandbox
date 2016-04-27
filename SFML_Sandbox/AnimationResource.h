@@ -19,8 +19,8 @@ public:
 public:
     bool LoadResource();
     void UnloadResource();
-    bool update();
-    void Draw(sf::RenderWindow* pWindow);
+    bool UpdateFrame(const unsigned int lag);
+    void Draw(sf::RenderWindow* pWindow, const unsigned int lag);
 
 private:
     std::vector<tSpriteResource*> m_Frames;

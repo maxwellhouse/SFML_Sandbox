@@ -187,30 +187,3 @@ bool tResourceManager::LoadResourceFromTag(const std::string& tag)
     }
     return success;
 }
-
-void tResourceManager::update()
-{
-    std::map<std::string, std::shared_ptr<tBaseResource> >::iterator it = m_Resources.begin();
-    while (it != m_Resources.end())
-    {
-        if (it->second->IsLoaded())
-        {
-            it->second->update();
-        }
-        ++it;
-    }
-}
-
-void tResourceManager::Draw(sf::RenderWindow* pWindow)
-{
-    std::map<std::string, std::shared_ptr<tBaseResource> >::iterator it = m_Resources.begin();
-    while (it != m_Resources.end())
-    {
-        //TODO: FIX THIS MAN.
-        if (it->second->Type() == tBaseResource::ert_Animation && it->second->IsLoaded())
-        {
-            it->second->Draw(pWindow);
-        }
-        ++it;
-    }
-}

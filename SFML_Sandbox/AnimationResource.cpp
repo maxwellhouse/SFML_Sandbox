@@ -41,20 +41,20 @@ void tAnimationResource::UnloadResource()
     }
 }
 
-bool tAnimationResource::update()
+bool tAnimationResource::UpdateFrame(const unsigned int lag)
 {
     m_CurrentFrame++;
-    if (m_CurrentFrame / 4 >= (m_Frames.size()-1))
+    if (m_CurrentFrame / lag >= (m_Frames.size()-1))
     { 
         m_CurrentFrame = 0;
     }
     return true;
 }
 
-void tAnimationResource::Draw(sf::RenderWindow* pWindow)
+void tAnimationResource::Draw(sf::RenderWindow* pWindow, const unsigned int lag)
 {
     if (IsLoaded() == true)
     {
-        m_Frames[m_CurrentFrame / 4]->Draw(pWindow);
+        m_Frames[m_CurrentFrame / lag]->Draw(pWindow, lag);
     }
 }

@@ -128,6 +128,7 @@
     <ClCompile Include="..\..\SDKs\json11\json11.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AnimationResource.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SingletonTemplate.hpp" />
     <ClInclude Include="SpriteSheetResource.h" />
+    <ClInclude Include="Bullet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

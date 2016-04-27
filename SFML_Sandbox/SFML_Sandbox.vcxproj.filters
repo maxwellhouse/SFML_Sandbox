@@ -81,6 +81,9 @@
     <ClCompile Include="GameEngine.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ResourceBase.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="GameEngine.h">
       <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files\Actors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

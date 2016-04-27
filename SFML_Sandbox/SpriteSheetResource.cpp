@@ -35,8 +35,3 @@ const sf::Texture* tSpriteSheetResource::Texture() const
 {
     return m_pTexture;
 }
-
-bool tSpriteSheetResource::update()
-{
-    return true;
-}

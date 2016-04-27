@@ -22,8 +22,6 @@ public:
     bool LoadResources(const std::string& path);
     bool LoadResourceFromTag(const std::string& tag);
 
-    void update();
-    void Draw(sf::RenderWindow*  pWindow);
     //void SetScope(unsigned int scope);
 protected:
     unsigned int m_CurrentScope;

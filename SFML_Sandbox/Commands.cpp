@@ -3,27 +3,27 @@
 
 void tShootCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    xActor->shoot();
+    xActor->Shoot();
 }
 
 void tMoveLeftCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    xActor->moveLeft();
+    xActor->MoveLeft();
 }
 
 void tMoveRightCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    xActor->moveRight();
+    xActor->MoveRight();
 }
 
 void tMoveUpCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    xActor->moveUp();
+    xActor->MoveUp();
 }
 
 void tMoveDownCommand::execute(const std::shared_ptr<tActor>& xActor)
 {
-    xActor->moveDown();
+    xActor->MoveDown();
 }
 
 void tPauseCommand::execute(const std::shared_ptr<tActor>& xActor)

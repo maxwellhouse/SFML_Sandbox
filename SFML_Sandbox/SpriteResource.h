@@ -19,8 +19,7 @@ public:
 public:
     bool LoadResource();
     void UnloadResource();
-    bool update();
-    void Draw(sf::RenderWindow* window);
+    void Draw(sf::RenderWindow* window, const unsigned int lag);
 
 private:
     int m_Height;

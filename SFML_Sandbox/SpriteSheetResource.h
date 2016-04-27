@@ -5,6 +5,7 @@
 namespace sf
 {
     class Texture;
+    class RenderWindow;
 }
 
 class tSpriteSheetResource : public tBaseResource
@@ -17,7 +18,8 @@ public:
     const sf::Texture* Texture() const;
     bool LoadResource();
     void UnloadResource();
-    bool update();
+    void Update(const unsigned int) {};
+    void Draw(sf::RenderWindow*, const unsigned int) {};
 
 private:
     sf::Texture* m_pTexture;

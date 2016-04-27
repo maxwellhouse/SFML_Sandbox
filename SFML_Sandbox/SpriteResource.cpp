@@ -44,12 +44,8 @@ void tSpriteResource::UnloadResource()
     m_pSprite = nullptr;
     SetLoaded(false);
 }
-bool tSpriteResource::update()
-{
-    return false;
-}
 
-void tSpriteResource::Draw(sf::RenderWindow* pWindow)
+void tSpriteResource::Draw(sf::RenderWindow* pWindow, const unsigned int)
 {
     if (IsLoaded() == true)
     {

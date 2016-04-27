@@ -25,8 +25,7 @@ public:
 public:
     virtual bool LoadResource() = 0;
     virtual void UnloadResource() = 0;
-    virtual bool update() = 0;
-    virtual void Draw(sf::RenderWindow* pWindow) {};
+    virtual void Draw(sf::RenderWindow*, const unsigned int lag) = 0;
 private:
     std::string m_Path;
     eResourceType m_Type;
