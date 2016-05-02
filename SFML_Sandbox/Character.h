@@ -1,10 +1,10 @@
 #pragma once
-#include "Actor.h"
+#include "Entity.h"
 
 // Forward declares
 class tBullet;
 
-class tCharacter : public tActor
+class tCharacter : public tEntity
 {
 public:
     tCharacter();
@@ -16,18 +16,13 @@ public:
 
     virtual ~tCharacter();
 
-    bool MoveLeft();
-    bool MoveRight();
-    bool MoveUp();
-    bool MoveDown();
     bool Shoot();
 
     bool Update(const unsigned int lag);
-    void Draw(sf::RenderWindow* pWindow, const unsigned int lag);
+    void Draw(const std::shared_ptr<sf::RenderWindow>& xWindow);
 
 private:
     unsigned int m_Health;
-    unsigned int m_Speed;
     std::string m_CurrentBulletType;
     std::vector<std::shared_ptr<tBullet> > m_Projectiles;
 };

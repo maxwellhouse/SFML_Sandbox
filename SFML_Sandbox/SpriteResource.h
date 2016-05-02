@@ -1,6 +1,8 @@
 #pragma once
 #include "ResourceBase.h"
 
+#include <memory>
+
 //Forward declare
 namespace sf
 {
@@ -19,7 +21,8 @@ public:
 public:
     bool LoadResource();
     void UnloadResource();
-    void Draw(sf::RenderWindow* window, const unsigned int lag);
+    bool Move(const int x, const int y);
+    void Draw(const std::shared_ptr<sf::RenderWindow>& xWindow);
 
 private:
     int m_Height;

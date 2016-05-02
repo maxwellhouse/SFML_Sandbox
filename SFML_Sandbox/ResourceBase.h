@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <memory>
 
 //Foward declares
 namespace sf {
@@ -25,7 +26,7 @@ public:
 public:
     virtual bool LoadResource() = 0;
     virtual void UnloadResource() = 0;
-    virtual void Draw(sf::RenderWindow*, const unsigned int lag) = 0;
+    virtual void Draw(const std::shared_ptr<sf::RenderWindow>&) = 0;
 private:
     std::string m_Path;
     eResourceType m_Type;

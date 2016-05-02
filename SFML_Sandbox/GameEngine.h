@@ -2,6 +2,7 @@
 #include "SingletonTemplate.hpp"
 
 #include <memory>
+#include <vector>
 
 //Forward declares
 class tCharacter;
@@ -17,6 +18,7 @@ public:
     tGameEngine();
     ~tGameEngine() {};
     tGameEngine(bool debug);
+    bool Initialize(const int width, const int height);
 
     void Start();
 
@@ -29,7 +31,6 @@ public:
 
 private:
     tGameEngine(const tGameEngine&) {};
-    bool Initialize(const int width, const int height);
 
 private:
     unsigned int m_WindowWidth;
@@ -43,6 +44,7 @@ private:
 
     // Entities
     std::shared_ptr<tCharacter> m_xPlayer;
+    std::vector<std::shared_ptr<tCharacter> > m_Characters;
 
     // Window
     std::shared_ptr<sf::RenderWindow> m_xWindow;

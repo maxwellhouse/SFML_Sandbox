@@ -51,10 +51,10 @@ bool tAnimationResource::UpdateFrame(const unsigned int lag)
     return true;
 }
 
-void tAnimationResource::Draw(sf::RenderWindow* pWindow, const unsigned int lag)
+void tAnimationResource::Draw(const std::shared_ptr<sf::RenderWindow>& xWindow)
 {
     if (IsLoaded() == true)
     {
-        m_Frames[m_CurrentFrame / lag]->Draw(pWindow, lag);
+        m_Frames[m_CurrentFrame]->Draw(xWindow);
     }
 }

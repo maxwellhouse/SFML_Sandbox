@@ -1,6 +1,7 @@
 #include "InputManager.h"
 #include "Commands.h"
 #include "SafeDelete.hpp"
+#include "Character.h"
 #include <SFML/Window.hpp>
 
 tInputManager::tInputManager()
@@ -25,28 +26,27 @@ tInputManager::~tInputManager()
     SafeDelete(m_NoOperation);
 }
 
-tCommand* tInputManager::handleInput(std::shared_ptr<sf::Window> xWindow)
+void tInputManager::handleInput(sf::Window& window, const std::shared_ptr<tCharacter>& xCharacter)
 {
     sf::Event event;
-    while (xWindow->pollEvent(event))
+    while (window.pollEvent(event))
     {
         if (event.type == sf::Event::Closed)
-            xWindow->close();
+            window.close();
         if (event.type == sf::Event::KeyPressed)
         {
             if (event.key.code == sf::Keyboard::Space)
-                return m_ButtonShoot;
+                m_ButtonShoot->execute(xCharacter);
             else if (event.key.code == sf::Keyboard::Left)
-                return m_ButtonLeft;
+                m_ButtonLeft->execute(xCharacter);
             else if (event.key.code == sf::Keyboard::Right)
-                return m_ButtonRight;
+                m_ButtonRight->execute(xCharacter);
             else if (event.key.code == sf::Keyboard::Up)
-                return m_ButtonUp;
+                m_ButtonUp->execute(xCharacter);
             else if (event.key.code == sf::Keyboard::Down)
-                return m_ButtonDown;
+                m_ButtonDown->execute(xCharacter);
             else if (event.key.code == sf::Keyboard::P)
-                return m_ButtonPause;
+                m_ButtonPause->execute(xCharacter);
         }
     }
-    return m_NoOperation;
 }

@@ -20,7 +20,7 @@ public:
     bool LoadResource();
     void UnloadResource();
     bool UpdateFrame(const unsigned int lag);
-    void Draw(sf::RenderWindow* pWindow, const unsigned int lag);
+    void Draw(const std::shared_ptr<sf::RenderWindow>& xWindow);
 
 private:
     std::vector<tSpriteResource*> m_Frames;

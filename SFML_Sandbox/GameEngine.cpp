@@ -42,6 +42,7 @@ bool tGameEngine::Initialize(const int width, const int height)
     m_xInputManager = std::make_shared<tInputManager>();
     m_xPlayer = std::make_shared<tCharacter>(m_WindowWidth / 2, m_WindowHeight / 2, 100, 10, m_xResourceManager->GetResource("spaceship_boost"));
 
+    m_Characters.push_back(m_xPlayer);
     return success;
 }
 
@@ -56,12 +57,16 @@ void tGameEngine::Start()
         elapsed = clock.restart();
         lag += elapsed;
 
-        tCommand* pCommand = m_xInputManager->handleInput(m_xWindow);
-        pCommand->execute(m_xPlayer);
+        m_xInputManager->handleInput(*m_xWindow, m_xPlayer);
 
         while (lag.asMilliseconds() >= m_MSPerUpdate)
         {
             lag -= sf::milliseconds(m_MSPerUpdate);
+        }
+        for (auto & xCharacter : m_Characters)
+        {
+            xCharacter->Update(lag.asMilliseconds());
+            xCharacter->Draw(m_xWindow);
         }
         //pResourceManager->update();
         //pResourceManager->Draw(m_xWindow);

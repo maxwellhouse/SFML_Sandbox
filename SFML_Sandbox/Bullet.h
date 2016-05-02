@@ -1,26 +1,22 @@
 #pragma once
-#include "Actor.h"
+#include "Entity.h"
 
-class tBullet : public tActor
+class tBullet : private tEntity
 {
 public:
     tBullet();
-    tBullet(const int x
-        , const int y
-        , const unsigned int speed
+    tBullet(const unsigned int x
+        , const unsigned int y
+        , const int speed
+        , const unsigned int damage
         , const std::shared_ptr<tBaseResource>& xResource);
 
     virtual ~tBullet();
 
-    bool MoveLeft();
-    bool MoveRight();
-    bool MoveUp();
-    bool MoveDown();
-    bool Shoot();
-
     bool Update(const unsigned int lag);
-    void Draw(sf::RenderWindow* pWindow, const unsigned int lag);
+    void Draw(const std::shared_ptr<sf::RenderWindow>& xWindow);
 
 private:
     unsigned int m_Speed;
+    unsigned int m_Damage;
 };

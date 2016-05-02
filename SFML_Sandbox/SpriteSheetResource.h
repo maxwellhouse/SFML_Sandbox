@@ -19,7 +19,7 @@ public:
     bool LoadResource();
     void UnloadResource();
     void Update(const unsigned int) {};
-    void Draw(sf::RenderWindow*, const unsigned int) {};
+    void Draw(const std::shared_ptr<sf::RenderWindow>&) {};
 
 private:
     sf::Texture* m_pTexture;

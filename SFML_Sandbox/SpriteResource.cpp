@@ -45,11 +45,16 @@ void tSpriteResource::UnloadResource()
     SetLoaded(false);
 }
 
-void tSpriteResource::Draw(sf::RenderWindow* pWindow, const unsigned int)
+bool tSpriteResource::Move(const int x, const int y)
+{
+    m_pSprite->setPosition(sf::Vector2f(x, y));
+}
+
+void tSpriteResource::Draw(const std::shared_ptr<sf::RenderWindow>& xWindow)
 {
     if (IsLoaded() == true)
     {
-        pWindow->draw(*m_pSprite);
+        xWindow->draw(*m_pSprite);
     }
 }
 

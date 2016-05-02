@@ -2,6 +2,7 @@
 #include "Commands.h"
 
 // Forward declares
+class tCharacter;
 namespace sf
 {
     class Window;
@@ -12,7 +13,7 @@ public:
     tInputManager();
     ~tInputManager();
 
-    tCommand* handleInput(std::shared_ptr<sf::Window> xWindow);
+    void handleInput(sf::Window& window, const std::shared_ptr<tCharacter>& xCharacter);
 private:
     tCommand* m_ButtonShoot;
     tCommand* m_ButtonPause;

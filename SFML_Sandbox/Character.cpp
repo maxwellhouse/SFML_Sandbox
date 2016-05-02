@@ -5,9 +5,8 @@
 #include "ResourceManager.h"
 
 tCharacter::tCharacter() :
-    tActor()
+    tEntity()
     , m_Health(0)
-    , m_Speed(0)
     , m_CurrentBulletType("default_bullet_type")
 {
 }
@@ -17,9 +16,8 @@ tCharacter::tCharacter(const int x
                      , const unsigned int health
                      , const unsigned int speed
                      , const std::shared_ptr<tBaseResource>& xResource) :
-    tActor(x, y, xResource)
+    tEntity(x, y, speed, xResource)
     , m_Health(health)
-    , m_Speed(speed)
     , m_CurrentBulletType("default_bullet_type")
 {
 }
@@ -30,61 +28,20 @@ tCharacter::~tCharacter()
 }
 
 
-void tCharacter::Draw(sf::RenderWindow* pWindow, const unsigned int lag)
+void tCharacter::Draw(const std::shared_ptr<sf::RenderWindow>& xWindow)
 {
-    m_xResource->Draw(pWindow, lag);
+    m_xResource->Draw(xWindow);
 }
-
-bool tCharacter::MoveDown()
-{
-    bool success = false;
-    if ((m_YPos + m_Speed) <= tGameEngine::Instance()->CurrentHeight())
-    {
-        m_YPos += m_Speed;
-        success = true;
-    }
-    return success;
-}
-
-bool tCharacter::MoveLeft()
-{
-    bool success = false;
-    if ((m_XPos - m_Speed) > tGameEngine::Instance()->CurrentWidth())
-    {
-        m_XPos -= m_Speed;
-        success = true;
-    }
-    return success;
-}
-
-bool tCharacter::MoveRight()
-{
-    bool success = false;
-    if ((m_XPos + m_Speed) <= tGameEngine::Instance()->CurrentWidth())
-    {
-        m_XPos += m_Speed;
-        success = true;
-    }
-    return success;
-}
-
-bool tCharacter::MoveUp()
-{
-    bool success = false;
-    if ((m_YPos - m_Speed) > tGameEngine::Instance()->CurrentHeight())
-    {
-        m_YPos -= m_Speed;
-        success = true;
-    }
-    return success;
-}
-
 bool tCharacter::Shoot()
 {
     bool success = false;
     if ((m_Projectiles.size() + 1) <= tGameEngine::MaxBulletsPerActor())
     {
-        m_Projectiles.push_back(std::make_shared<tBullet>(m_XPos, m_YPos, rand() % 10, tGameEngine::ResourceManager()->GetResource(m_CurrentBulletType)));
+        m_Projectiles.push_back(std::make_shared<tBullet>(m_XPos
+                                                         , m_YPos
+                                                         , rand() % 10
+                                                         , rand() % 1000
+                                                         , tGameEngine::ResourceManager()->GetResource(m_CurrentBulletType)));
         success = true;
     }
     return success;

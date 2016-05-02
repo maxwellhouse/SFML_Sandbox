@@ -126,7 +126,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SDKs\json11\json11.cpp" />
-    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="AnimationResource.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Commands.cpp" />
@@ -143,7 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\SDKs\json11\json11.hpp" />
-    <ClInclude Include="Actor.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="AnimationResource.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="GameEngine.h" />
