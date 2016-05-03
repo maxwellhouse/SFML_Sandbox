@@ -17,6 +17,7 @@ tEntity::tEntity(const int x, const int y, const int speed, const std::shared_pt
     , m_Speed(speed)
     , m_xResource(xResource)
 {
+    m_xResource->Move(m_XPos, m_YPos);
 }
 
 tEntity::~tEntity()
@@ -33,6 +34,7 @@ bool tEntity::MoveLeft()
         {
             m_XPos = 0;
         }
+        m_xResource->Move(m_XPos, m_YPos);
         moveSuccessful = true;
     }
     return moveSuccessful;
@@ -50,6 +52,7 @@ bool tEntity::MoveRight()
             {
                 m_XPos = pEngine->CurrentWidth();
             }
+            m_xResource->Move(m_XPos, m_YPos);
             moveSuccessful = true;
         }
     }
@@ -60,7 +63,7 @@ bool tEntity::MoveRight()
     }
     return moveSuccessful;
 }
-bool tEntity::MoveDown()
+bool tEntity::MoveUp()
 {
     bool moveSuccessful = false;
     if (m_YPos != 0)
@@ -70,11 +73,12 @@ bool tEntity::MoveDown()
         {
             m_YPos = 0;
         }
+        m_xResource->Move(m_XPos, m_YPos);
         moveSuccessful = true;
     }
     return moveSuccessful;
 }
-bool tEntity::MoveUp()
+bool tEntity::MoveDown()
 {
     bool moveSuccessful = false;
     tGameEngine* pEngine = tGameEngine::Instance();
@@ -83,10 +87,11 @@ bool tEntity::MoveUp()
         if (m_YPos != pEngine->CurrentHeight())
         {
             m_YPos += m_Speed;
-            if (m_YPos > pEngine->CurrentHeight())
+            if (m_YPos  > pEngine->CurrentHeight())
             {
                 m_YPos = pEngine->CurrentHeight();
             }
+            m_xResource->Move(m_XPos, m_YPos);
             moveSuccessful = true;
         }
     }

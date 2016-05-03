@@ -20,8 +20,8 @@ public:
     virtual ~tSpriteResource();
 public:
     bool LoadResource();
-    void UnloadResource();
-    bool Move(const int x, const int y);
+    void UnloadResource(); 
+    void Move(const int x, const int y);
     void Draw(const std::shared_ptr<sf::RenderWindow>& xWindow);
 
 private:

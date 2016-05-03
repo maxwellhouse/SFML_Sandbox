@@ -27,6 +27,7 @@ public:
     virtual bool LoadResource() = 0;
     virtual void UnloadResource() = 0;
     virtual void Draw(const std::shared_ptr<sf::RenderWindow>&) = 0;
+    virtual void Move(const int x, const int y) {};
 private:
     std::string m_Path;
     eResourceType m_Type;

@@ -40,7 +40,7 @@ bool tGameEngine::Initialize(const int width, const int height)
     m_xResourceManager->LoadResources("../resources/resource.json");
 
     m_xInputManager = std::make_shared<tInputManager>();
-    m_xPlayer = std::make_shared<tCharacter>(m_WindowWidth / 2, m_WindowHeight / 2, 100, 10, m_xResourceManager->GetResource("spaceship_boost"));
+    m_xPlayer = std::make_shared<tCharacter>(m_WindowWidth / 2, m_WindowHeight, 100, 10, m_xResourceManager->GetResource("spaceship_boost"));
 
     m_Characters.push_back(m_xPlayer);
     return success;
@@ -63,6 +63,8 @@ void tGameEngine::Start()
         {
             lag -= sf::milliseconds(m_MSPerUpdate);
         }
+
+        m_xWindow->clear();
         for (auto & xCharacter : m_Characters)
         {
             xCharacter->Update(lag.asMilliseconds());

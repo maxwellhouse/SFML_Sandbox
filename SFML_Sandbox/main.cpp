@@ -4,7 +4,7 @@
 
 int main()
 {
-    tGameEngine::Instance()->Initialize(1024, 800);
+    tGameEngine::Instance()->Initialize(1024, 768);
     tGameEngine::Instance()->Start();
     //std::thread gameThread(&tGameEngine::Start, tGameEngine::Instance());
 

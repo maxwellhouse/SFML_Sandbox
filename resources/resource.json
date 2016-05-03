@@ -4,6 +4,7 @@
 	},
 	"animation": {
 		"tag": "spaceship_boost",
+		"frameTime": 200,
 		"frames":[
 			{
 			"image": {

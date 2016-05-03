@@ -1,9 +1,11 @@
 #include "AnimationResource.h"
 #include "SpriteResource.h"
 
-tAnimationResource::tAnimationResource(const std::string& path) :
+tAnimationResource::tAnimationResource(const std::string& path, const sf::Time& frameTime) :
     tBaseResource(path, ert_Animation)
     , m_CurrentFrame(0)
+    , m_FrameTime(frameTime)
+    , m_CurrentTime(sf::Time::Zero)
 {
 }
 
@@ -43,10 +45,15 @@ void tAnimationResource::UnloadResource()
 
 bool tAnimationResource::UpdateFrame(const unsigned int lag)
 {
-    m_CurrentFrame++;
-    if (m_CurrentFrame / lag >= (m_Frames.size()-1))
-    { 
-        m_CurrentFrame = 0;
+    m_CurrentTime += sf::milliseconds(lag);
+    if (m_CurrentTime >= m_FrameTime)
+    {
+        m_CurrentTime = sf::milliseconds(m_CurrentTime.asMilliseconds() % m_FrameTime.asMilliseconds());
+        m_CurrentFrame++;
+        if (m_CurrentFrame >= m_Frames.size())
+        {
+            m_CurrentFrame = 0;
+        }
     }
     return true;
 }
@@ -56,5 +63,13 @@ void tAnimationResource::Draw(const std::shared_ptr<sf::RenderWindow>& xWindow)
     if (IsLoaded() == true)
     {
         m_Frames[m_CurrentFrame]->Draw(xWindow);
+    }
+}
+
+void tAnimationResource::Move(const int x, const int y)
+{
+    for (std::vector<tSpriteResource*>::const_iterator it = m_Frames.begin(); it != m_Frames.end(); ++it)
+    {
+        (*it)->Move(x, y);
     }
 }

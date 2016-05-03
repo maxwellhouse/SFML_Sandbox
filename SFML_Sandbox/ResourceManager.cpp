@@ -104,7 +104,8 @@ bool tResourceManager::ReadAnimationResouce(const json11::Json& data)
     {
         std::map<std::string, json11::Json> animation = data["animation"].object_items();
         std::string animationTag = animation["tag"].string_value();
-        tAnimationResource* pAnimation = new tAnimationResource(animationTag);
+        int frameTime = animation["frameTime"].int_value();
+        tAnimationResource* pAnimation = new tAnimationResource(animationTag, sf::milliseconds(frameTime));
         if (animation["frames"].is_array() == true)
         {
             std::vector<json11::Json>::const_iterator iFrames = animation["frames"].array_items().begin();
