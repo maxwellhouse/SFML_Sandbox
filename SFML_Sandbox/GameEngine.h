@@ -3,11 +3,13 @@
 
 #include <memory>
 #include <vector>
+#include <stack>
 
 //Forward declares
 class tCharacter;
 class tInputManager;
 class tResourceManager;
+class tState;
 
 namespace sf {
     class RenderWindow;
@@ -22,6 +24,14 @@ public:
 
     void Start();
 
+    // State managers
+    void PushState(tState* pState);
+    void PopState();
+    void ChangeState(tState* pState);
+    tState* PeekState();
+
+    // Accessors
+    std::shared_ptr<sf::RenderWindow> Window() { return m_xWindow; }
     unsigned int CurrentWidth() const { return m_WindowWidth; }
     unsigned int CurrentHeight() const { return m_WindowHeight; }
     static unsigned int MaxBulletsPerActor() { return m_MaxBulletsPerActor; }
@@ -45,6 +55,9 @@ private:
     // Entities
     std::shared_ptr<tCharacter> m_xPlayer;
     std::vector<std::shared_ptr<tCharacter> > m_Characters;
+
+    // States
+    std::stack<tState*> m_States;
 
     // Window
     std::shared_ptr<sf::RenderWindow> m_xWindow;

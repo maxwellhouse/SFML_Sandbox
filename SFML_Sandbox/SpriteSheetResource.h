@@ -20,6 +20,7 @@ public:
     void UnloadResource();
     void Update(const unsigned int) {};
     void Draw(const std::shared_ptr<sf::RenderWindow>&) {};
+    std::pair<int, int> Size() const;
 
 private:
     sf::Texture* m_pTexture;

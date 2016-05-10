@@ -1,4 +1,5 @@
 #pragma once
+#include "StateManager.h"
 #include <map>
 #include <memory>
 
@@ -22,10 +23,7 @@ public:
     bool LoadResources(const std::string& path);
     bool LoadResourceFromTag(const std::string& tag);
 
-    //void SetScope(unsigned int scope);
 protected:
-    unsigned int m_CurrentScope;
-    unsigned int m_ReferenceCount;
     std::map<std::string, std::shared_ptr<tBaseResource> > m_Resources;
 
 private:

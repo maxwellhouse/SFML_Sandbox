@@ -134,5 +134,8 @@
     <ClInclude Include="Entity.h">
       <Filter>Header Files\Actors</Filter>
     </ClInclude>
+    <ClInclude Include="State.hpp">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,11 +11,16 @@ tEntity::tEntity() :
     m_xResource = nullptr;
 }
 
-tEntity::tEntity(const int x, const int y, const int speed, const std::shared_ptr<tBaseResource>&xResource) :
+tEntity::tEntity(const int x
+               , const int y
+               , const int speed
+               , const std::shared_ptr<tBaseResource>& xResource
+               , const std::shared_ptr<tGameEngine>& xEngine) :
       m_XPos(x)
     , m_YPos(y)
     , m_Speed(speed)
     , m_xResource(xResource)
+    , m_xGameEngine(xEngine)
 {
     m_xResource->Move(m_XPos, m_YPos);
 }
@@ -26,79 +31,39 @@ tEntity::~tEntity()
 
 bool tEntity::MoveLeft()
 {
-    bool moveSuccessful = false;
-    if (m_XPos != 0)
-    {
-        m_XPos -= m_Speed;
-        if (m_XPos < 0)
-        {
-            m_XPos = 0;
-        }
-        m_xResource->Move(m_XPos, m_YPos);
-        moveSuccessful = true;
-    }
-    return moveSuccessful;
+    return OffsetMove(-m_Speed, 0);
 }
 bool tEntity::MoveRight()
 {
-    bool moveSuccessful = false;
-    tGameEngine* pEngine = tGameEngine::Instance();
-    if (pEngine)
-    {
-        if (m_XPos != pEngine->CurrentWidth())
-        {
-            m_XPos += m_Speed;
-            if (m_XPos > pEngine->CurrentWidth())
-            {
-                m_XPos = pEngine->CurrentWidth();
-            }
-            m_xResource->Move(m_XPos, m_YPos);
-            moveSuccessful = true;
-        }
-    }
-    else
-    {
-        std::string err("Failed to obtain game engine.");
-        tLocator::GetLogger().Log(err);
-    }
-    return moveSuccessful;
+    return OffsetMove(m_Speed, 0);
 }
 bool tEntity::MoveUp()
 {
-    bool moveSuccessful = false;
-    if (m_YPos != 0)
-    {
-        m_YPos -= m_Speed;
-        if (m_YPos < 0)
-        {
-            m_YPos = 0;
-        }
-        m_xResource->Move(m_XPos, m_YPos);
-        moveSuccessful = true;
-    }
-    return moveSuccessful;
+    return OffsetMove(0, -m_Speed);
 }
 bool tEntity::MoveDown()
 {
-    bool moveSuccessful = false;
-    tGameEngine* pEngine = tGameEngine::Instance();
-    if (pEngine)
+    return OffsetMove(0, m_Speed);
+}
+
+bool tEntity::Move(const int x, const int y)
+{
+    bool success = false;
+    if ((x + m_xResource->Size().first < m_xGameEngine->CurrentWidth() && x >= 0) 
+       && (y + m_xResource->Size().second < m_xGameEngine->CurrentHeight() && y >= 0))
     {
-        if (m_YPos != pEngine->CurrentHeight())
-        {
-            m_YPos += m_Speed;
-            if (m_YPos  > pEngine->CurrentHeight())
-            {
-                m_YPos = pEngine->CurrentHeight();
-            }
-            m_xResource->Move(m_XPos, m_YPos);
-            moveSuccessful = true;
-        }
+        m_XPos = x;
+        m_YPos = y;
+        m_xResource->Move(m_XPos, m_YPos);
+        success = true;
     }
-    else
-    {
-        std::string err("Failed to obtain game engine.");
-        tLocator::GetLogger().Log(err);
-    }
-    return moveSuccessful;
+    return success;
+}
+
+bool tEntity::OffsetMove(const int x, const int y)
+{
+    int newX = m_XPos + x;
+    int newY = m_YPos + y;
+
+    return Move(newX, newY);
 }

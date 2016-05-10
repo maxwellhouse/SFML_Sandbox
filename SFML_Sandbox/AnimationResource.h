@@ -23,7 +23,7 @@ public:
     bool UpdateFrame(const unsigned int lag);
     void Draw(const std::shared_ptr<sf::RenderWindow>& xWindow);
     void Move(const int x, const int y);
-
+    std::pair<int, int> Size() const;
 private:
     std::vector<tSpriteResource*> m_Frames;
     unsigned int m_CurrentFrame;

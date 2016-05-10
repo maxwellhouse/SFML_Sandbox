@@ -3,6 +3,7 @@
 
 // Forward declares
 class tBullet;
+class tGameEngine;
 
 class tCharacter : public tEntity
 {
@@ -12,7 +13,8 @@ public:
         , const int y
         , const unsigned int health
         , const unsigned int speed
-        , const std::shared_ptr<tBaseResource>& xResource);
+        , const std::shared_ptr<tBaseResource>& xResource
+        , const std::shared_ptr<tGameEngine>& xEngine);
 
     virtual ~tCharacter();
 

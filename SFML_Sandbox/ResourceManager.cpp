@@ -7,9 +7,7 @@
 #include "../../json11/json11.hpp"
 
 
-tResourceManager::tResourceManager():
-      m_CurrentScope(0)
-    , m_ReferenceCount(0)
+tResourceManager::tResourceManager()
 {
 }
 

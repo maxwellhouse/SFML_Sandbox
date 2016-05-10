@@ -5,6 +5,7 @@
 #include "Locator.h"
 #include "InputManager.h"
 #include "Character.h"
+#include "State.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -28,6 +29,14 @@ tGameEngine::tGameEngine(bool debug) :
     tLocator::ProvideLogger(&log);
 }
 
+tGameEngine::~tGameEngine()
+{
+    while (m_States.empty() == false)
+    {
+        PopState();
+    }
+}
+
 bool tGameEngine::Initialize(const int width, const int height)
 {
     bool success = false;
@@ -40,7 +49,12 @@ bool tGameEngine::Initialize(const int width, const int height)
     m_xResourceManager->LoadResources("../resources/resource.json");
 
     m_xInputManager = std::make_shared<tInputManager>();
-    m_xPlayer = std::make_shared<tCharacter>(m_WindowWidth / 2, m_WindowHeight, 100, 10, m_xResourceManager->GetResource("spaceship_boost"));
+    m_xPlayer = std::make_shared<tCharacter>(0
+                                           , 0
+                                           , 100
+                                           , 10
+                                           , m_xResourceManager->GetResource("spaceship_boost")
+                                           , std::make_shared<tGameEngine>(this));
 
     m_Characters.push_back(m_xPlayer);
     return success;
@@ -64,15 +78,44 @@ void tGameEngine::Start()
             lag -= sf::milliseconds(m_MSPerUpdate);
         }
 
-        m_xWindow->clear();
-        for (auto & xCharacter : m_Characters)
+        tState* pCurState = PeekState();
+        if (pCurState != nullptr)
         {
-            xCharacter->Update(lag.asMilliseconds());
-            xCharacter->Draw(m_xWindow);
+            pCurState->HandleInput();
+            pCurState->Update(lag.asMilliseconds());
+            pCurState->Draw(lag.asMilliseconds());
+            m_xWindow->clear();
         }
-        //pResourceManager->update();
-        //pResourceManager->Draw(m_xWindow);
         m_xWindow->display();
     }
 
+}
+
+void tGameEngine::PushState(tState * pState)
+{
+    m_States.push(pState);
+}
+
+void tGameEngine::PopState()
+{
+    delete m_States.top();
+    m_States.pop();
+}
+
+void tGameEngine::ChangeState(tState * pState)
+{
+    if (m_States.empty() == false)
+    {
+        PopState();
+    }
+    PushState(pState);
+}
+
+tState * tGameEngine::PeekState()
+{
+    if (m_States.empty())
+    {
+        return nullptr;
+    }
+    return m_States.top();
 }

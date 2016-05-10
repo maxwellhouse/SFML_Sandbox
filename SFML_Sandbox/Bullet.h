@@ -1,6 +1,9 @@
 #pragma once
 #include "Entity.h"
 
+//Forward declares
+class tGameEngine;
+
 class tBullet : private tEntity
 {
 public:
@@ -9,7 +12,8 @@ public:
         , const unsigned int y
         , const int speed
         , const unsigned int damage
-        , const std::shared_ptr<tBaseResource>& xResource);
+        , const std::shared_ptr<tBaseResource>& xResource
+        , const std::shared_ptr<tGameEngine>& xEngine);
 
     virtual ~tBullet();
 

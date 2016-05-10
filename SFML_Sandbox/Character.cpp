@@ -16,8 +16,9 @@ tCharacter::tCharacter(const int x
                      , const int y
                      , const unsigned int health
                      , const unsigned int speed
-                     , const std::shared_ptr<tBaseResource>& xResource) :
-    tEntity(x, y, speed, xResource)
+                     , const std::shared_ptr<tBaseResource>& xResource
+                     , const std::shared_ptr<tGameEngine>& xEngine) :
+    tEntity(x, y, speed, xResource, xEngine)
     , m_Health(health)
     , m_CurrentBulletType("default_bullet_type")
 {
@@ -42,7 +43,8 @@ bool tCharacter::Shoot()
                                                          , m_YPos
                                                          , rand() % 10
                                                          , rand() % 1000
-                                                         , tGameEngine::ResourceManager()->GetResource(m_CurrentBulletType)));
+                                                         , tGameEngine::ResourceManager()->GetResource(m_CurrentBulletType)
+                                                         , m_xGameEngine));
         success = true;
     }
     return success;

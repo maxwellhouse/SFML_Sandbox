@@ -47,7 +47,7 @@ void tSpriteResource::UnloadResource()
 
 void tSpriteResource::Move(const int x, const int y)
 {
-    m_pSprite->setPosition(sf::Vector2f(static_cast<int>(x), static_cast<int>(y)));
+    m_pSprite->setPosition(sf::Vector2f(static_cast<float>(x), static_cast<float>(y)));
 }
 
 void tSpriteResource::Draw(const std::shared_ptr<sf::RenderWindow>& xWindow)
@@ -56,5 +56,15 @@ void tSpriteResource::Draw(const std::shared_ptr<sf::RenderWindow>& xWindow)
     {
         xWindow->draw(*m_pSprite);
     }
+}
+
+std::pair<int, int> tSpriteResource::Size() const
+{
+    std::pair<int, int> size = std::make_pair<int, int>(0, 0);
+    if (m_pSprite)
+    {
+        size = std::make_pair<int, int>(m_pSprite->getLocalBounds().width, m_pSprite->getLocalBounds().height);
+    }
+    return size;
 }
 
