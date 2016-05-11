@@ -1,10 +1,12 @@
 {
 	"spritesheet": {
-		"path": "../resources/sprites/spaceship_detail.png"
+		"path": "../resources/sprites/spaceship_detail.png",
+		"gameStates":[ 0,1,2,3 ]
 	},
 	"animation": {
 		"tag": "spaceship_boost",
 		"frameTime": 200,
+		"gameStates":[ 0,1,2,3 ],
 		"frames":[
 			{
 			"image": {

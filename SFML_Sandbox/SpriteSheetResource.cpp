@@ -36,12 +36,12 @@ const sf::Texture* tSpriteSheetResource::Texture() const
     return m_pTexture;
 }
 
-std::pair<int, int> tSpriteSheetResource::Size() const
+std::pair<unsigned int, unsigned int> tSpriteSheetResource::Size() const
 {
-    std::pair<int, int> size = std::make_pair<int, int>(0, 0);
+    std::pair<unsigned int, unsigned int> size = std::make_pair<unsigned int, unsigned int>(0, 0);
     if (m_pTexture)
     {
-        size = std::make_pair<int, int>(m_pTexture->getSize().x, m_pTexture->getSize().y);
+        size = std::make_pair<unsigned int, unsigned int>(m_pTexture->getSize().x, m_pTexture->getSize().y);
     }
     return size;
 }

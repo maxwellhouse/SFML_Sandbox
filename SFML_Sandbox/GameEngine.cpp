@@ -54,7 +54,7 @@ bool tGameEngine::Initialize(const int width, const int height)
                                            , 100
                                            , 10
                                            , m_xResourceManager->GetResource("spaceship_boost")
-                                           , std::make_shared<tGameEngine>(this));
+                                           , shared_from_this());
 
     m_Characters.push_back(m_xPlayer);
     return success;

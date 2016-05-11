@@ -1,6 +1,4 @@
 #pragma once
-#include "SingletonTemplate.hpp"
-
 #include <memory>
 #include <vector>
 #include <stack>
@@ -14,11 +12,11 @@ class tState;
 namespace sf {
     class RenderWindow;
 }
-class tGameEngine : public tSingleton<tGameEngine>
+class tGameEngine : public std::enable_shared_from_this<tGameEngine>
 {
 public:
     tGameEngine();
-    ~tGameEngine() {};
+    ~tGameEngine();
     tGameEngine(bool debug);
     bool Initialize(const int width, const int height);
 

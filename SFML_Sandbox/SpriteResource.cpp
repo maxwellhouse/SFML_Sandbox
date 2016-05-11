@@ -58,12 +58,13 @@ void tSpriteResource::Draw(const std::shared_ptr<sf::RenderWindow>& xWindow)
     }
 }
 
-std::pair<int, int> tSpriteResource::Size() const
+std::pair<unsigned int, unsigned int> tSpriteResource::Size() const
 {
-    std::pair<int, int> size = std::make_pair<int, int>(0, 0);
+    std::pair<unsigned int, unsigned int> size = std::make_pair<unsigned int, unsigned int>(0, 0);
     if (m_pSprite)
     {
-        size = std::make_pair<int, int>(m_pSprite->getLocalBounds().width, m_pSprite->getLocalBounds().height);
+        size = std::make_pair<int, int>(static_cast<unsigned int>(m_pSprite->getLocalBounds().width),
+                                        static_cast<unsigned int>(m_pSprite->getLocalBounds().height));
     }
     return size;
 }

@@ -74,9 +74,9 @@ void tAnimationResource::Move(const int x, const int y)
     }
 }
 
-std::pair<int, int> tAnimationResource::Size() const
+std::pair<unsigned int, unsigned int> tAnimationResource::Size() const
 {
-    std::pair<int, int> size = std::make_pair<int, int>(0, 0);
+    std::pair<int, int> size = std::make_pair<unsigned int, unsigned int>(0, 0);
     if (m_Frames.size() > 0)
     {
         size = (*m_Frames.begin())->Size();

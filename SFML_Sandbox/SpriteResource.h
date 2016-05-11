@@ -23,7 +23,7 @@ public:
     void UnloadResource(); 
     void Move(const int x, const int y);
     void Draw(const std::shared_ptr<sf::RenderWindow>& xWindow);
-    std::pair<int, int> Size() const;
+    std::pair<unsigned int, unsigned int> Size() const;
 
 private:
     int m_Height;

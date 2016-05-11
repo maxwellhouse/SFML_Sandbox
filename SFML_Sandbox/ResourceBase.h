@@ -26,7 +26,7 @@ public:
 public:
     virtual bool LoadResource() = 0;
     virtual void UnloadResource() = 0;
-    virtual std::pair<int, int> Size() const = 0;
+    virtual std::pair<unsigned int, unsigned int> Size() const = 0;
     virtual void Draw(const std::shared_ptr<sf::RenderWindow>&) = 0;
     virtual void Move(const int x, const int y) {};
 private:
